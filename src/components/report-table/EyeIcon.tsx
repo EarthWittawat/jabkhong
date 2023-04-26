@@ -1,10 +1,10 @@
 export const EyeIcon = ({
-    fill,
+    fill ,
     size,
     height,
     width,
     ...props
-  }) => {
+  }: any) => {
     return (
       <svg
         width={size || width || 24}
