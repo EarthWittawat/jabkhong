@@ -1,0 +1,50 @@
+{
+  "name": "jabkhong",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
+    "@headlessui/react": "^1.7.14",
+    "@heroicons/react": "^2.0.17",
+    "@mui/material": "^5.12.1",
+    "@mui/x-date-pickers": "^6.2.1",
+    "@nextui-org/react": "^1.0.0-beta.12",
+    "@radix-ui/colors": "^0.1.8",
+    "@radix-ui/react-form": "^0.0.2",
+    "@radix-ui/react-popover": "1.0.5",
+    "@types/node": "18.15.11",
+    "@types/react": "18.0.37",
+    "@types/react-dom": "18.0.11",
+    "autoprefixer": "10.4.14",
+    "date-fns": "^2.29.3",
+    "eslint": "8.38.0",
+    "eslint-config-next": "13.3.0",
+    "focus-trap-react": "^10.1.1",
+    "framer-motion": "^10.12.4",
+    "lucide-react": "^0.162.0",
+    "micromark-util-classify-character": "^1.0.0",
+    "next": "13.3.0",
+    "postcss": "8.4.22",
+    "react": "18.2.0",
+    "react-datepicker": "^4.11.0",
+    "react-day-picker": "^8.7.1",
+    "react-dom": "18.2.0",
+    "react-icons": "^4.8.0",
+    "react-markdown": "^8.0.7",
+    "react-table": "^7.8.0",
+    "react-wrap-balancer": "^0.4.0",
+    "tailwind-datepicker-react": "^1.2.3",
+    "tailwindcss": "3.3.1",
+    "typescript": "5.0.4"
+  },
+  "devDependencies": {
+    "@types/react-datepicker": "^4.10.0"
+  }
+}
