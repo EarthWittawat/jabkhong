@@ -39,7 +39,7 @@ export default function ReportTable(this: any) {
           aria-label="Example static collection table"
           css={{
             height: "auto",
-            minWidth: "100%",
+            minWidth: "auto",
             textAlign: "left",
           }}
           selectionMode="single"

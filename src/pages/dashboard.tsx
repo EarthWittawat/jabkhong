@@ -7,11 +7,11 @@ import ComponentGrid from '@/components/component-grid/component-grid'
 import Graph from '@/components/graph/graph'
 import Reportuser from '@/components/reportuser/reportuser'
 import { Grab } from 'lucide-react'
-export default function Home() {
+export default function Dashboard() {
   return (
     <main>
       <Sidebar />
-      <div className='bg-[#28B67A] w-full'>
+      <div className='bg-[#28B67A] w-full h-screen'>
       <div className="relative isolate px-6 pt-40 lg:px-8">
         <div className="mx-auto max-w-2xl">
           <div className="text-center">

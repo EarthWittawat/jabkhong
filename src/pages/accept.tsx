@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <main>
       <Sidebar />
-      <div className='bg-[#28B67A]'>
+      <div className='bg-[#28B67A] h-screen'>
       <div className="relative isolate px-6 pt-7 lg:px-8">
         <div className="mx-auto max-w-2xl py-16 sm:py-16 lg:py-16">
           <div className="text-center">
