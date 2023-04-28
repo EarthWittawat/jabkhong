@@ -12,9 +12,14 @@ export default function RegisterForm(this: any) {
       <Input label="หมายเลขโทรศัพท์" />
    
         </div>
-        <div className="my-4">
+        <div className="my-4 flex flex-col justify-center">
+                 <img
+          className="h-56 w-full object-cover"
+          src="/res/id-card.png"
+          />
         <Button flat> อัปโหลดบัตรประชาชน  </Button>
         </div>
+        
         <Link href={"/reportpage"}>
         <Button shadow color="success" auto>
         ลงทะเบียน 

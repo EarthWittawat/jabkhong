@@ -25,17 +25,17 @@ function SideNavbar() {
                 </Link>
               </div>
               <div className="flex  mb-2 justify-start items-center gap-4 pl-5 hover:bg-gray-900 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
-              <Link className="text-base text-gray-800 group-hover:text-white font-semibold " href="/">
+              <Link className="text-base text-gray-800 group-hover:text-white font-semibold " href="/accept">
                   อนุมัติการแจ้งโกง
                 </Link>
               </div>
               <div className="flex  mb-2 justify-start items-center gap-4 pl-5 hover:bg-gray-900 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
-                <Link className="text-base text-gray-800 group-hover:text-white font-semibold " href="/">
+                <Link className="text-base text-gray-800 group-hover:text-white font-semibold " href="/cheatreport">
                   การโกง
                 </Link>
               </div>
               <div className="flex  mb-2 justify-start items-center gap-4 pl-5 hover:bg-gray-900 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
-              <Link className="text-base text-gray-800 group-hover:text-white font-semibold " href="/">
+              <Link className="text-base text-gray-800 group-hover:text-white font-semibold " href="/user">
                   รายชื่อผู้ใช้
                 </Link>
               </div>
