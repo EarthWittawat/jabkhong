@@ -19,7 +19,7 @@ export default function ReportTable(this: any) {
       <>
       <div className="flex flex-col">
       <div className="flex flex-row gap-8 justify-center ">
-      <Input size="md" labelPlaceholder="กรอกข้อมูล" />
+      <Input placeholder="กรอกข้อมูล" />
       <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
