@@ -22,7 +22,7 @@ export default function ReportPage() {
   return (
     <main>
       <Navbar />
-      <div className='bg-[#1E1E1E]'>
+      <div className='bg-[#1E1E1E] '>
       <div className="relative isolate px-6 pt-14 lg:px-8">
         <div className="mx-auto max-w-3xl py-16 sm:py-48 lg:py-28">
           <div className="text-center">
@@ -54,7 +54,7 @@ export default function ReportPage() {
       </div>
       <div className='flex flex-col items-center'>
         <div className="my-10 w-9/12 max-w-screen-xl animate-fade-up gap-5 px-5 xl:px-0">
-       < Reportlistcard name={'สมมติ ว่าโกง'} bank={'000-111-9200'} detail={'โกงค่าเสื้อผ้า 3 ตัว ราคา 900 บาท'}/>
+       < Reportlistcard name={'สมมติชื่อ ก'} bank={'000-111-9200'} detail={'โกงค่าเสื้อผ้า 3 ตัว ราคา 900 บาท'}/>
       </div>
       </div>
       </div>
