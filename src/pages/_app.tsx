@@ -10,8 +10,11 @@ const prompt = Prompt({
 
 export default function App({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   return (
-    <SessionProvider session={session}>
+   
+  <SessionProvider session={session}>
+    <main className={prompt.className}>
     <Component {...pageProps} />
+    </main>
   </SessionProvider>
   ) 
 }
