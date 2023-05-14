@@ -8,8 +8,13 @@ const prompt = Prompt({
   weight: ['400', '700'],
 })
 
-export default function App({ Component, pageProps }: AppProps) {
-  return (<main className={prompt.className}>
+export default function App({ Component, pageProps: { session, ...pageProps } }: AppProps) {
+  return (
+   
+  <SessionProvider session={session}>
+    <main className={prompt.className}>
     <Component {...pageProps} />
-  </main>) 
+    </main>
+  </SessionProvider>
+  ) 
 }
