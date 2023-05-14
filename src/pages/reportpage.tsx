@@ -5,10 +5,7 @@ import { Dropdown, Input, Button } from '@nextui-org/react'
 import React from 'react'
 import ReportForm from '@/components/reportform/form'
 import Reportlistcard from '@/components/reportlist/list'
-import { useSession } from 'next-auth/react'
-import Link from 'next/link'
 export default function ReportPage() {
-  const { data: session, status } = useSession()
     const menuItems = [
         { key: "name", name: "ชื่อบัญชี" },
         { key: "tel", name: "เบอร์มือถือ" },
@@ -22,7 +19,6 @@ export default function ReportPage() {
         () => Array.from(selected).join(", ").replaceAll("_", " "),
         [selected]
       );
-  if (status === "authenticated"){
   return (
     <main>
       <Navbar />
@@ -67,7 +63,7 @@ export default function ReportPage() {
       <Footerpage/>
     </main>
   )
-
+}
 const reportcheck = [
   {
     title: "ตรวจสอบข้อมูลการฉ้อโกง 🔍",
@@ -79,11 +75,4 @@ const reportcheck = [
     ),
   }
 ];
-}
-else{
-  return (
-  <Link href={'/login'}></Link>
-  )
-}
-}
 

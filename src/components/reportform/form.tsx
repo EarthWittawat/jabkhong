@@ -5,9 +5,27 @@ import Select, { SelectChangeEvent } from '@mui/material/Select';
 import { Dropdown } from "@nextui-org/react";
 import MenuItem from '@mui/material/MenuItem';
 import { useState } from "react";
+import Axios from 'axios'
 
-export default function FormDemo(this: any) {
+export default function FormDemo(tthis: any) {
   const [selected, setSelected] = React.useState('ชื่อบัญชี');
+  const [name, setName] = useState('')
+  const [details, setdetails] = useState('')
+  const [bank, setBank] = useState('')
+  const [promptpay, setpromptpay] = useState('')
+  const [truewallet, settruewallet] = useState('')
+
+  const report = () => {
+    Axios.post('https://jabkhong-backend.vercel.app/api/reportwaitlist', {
+      name: name, 
+      details: details, 
+      bank: bank,
+      promptpay: promptpay,
+      truewallet: truewallet
+      }).then((response)=>{
+        console.log(response);
+      });
+  }
 const handleChange = (event: SelectChangeEvent) => {
   setSelected(event.target.value as string);
 };
