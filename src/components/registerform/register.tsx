@@ -8,7 +8,7 @@ export default function RegisterForm(this: any) {
   const [idCard, setidCard] = useState('')
   const [tel, setTel] = useState('')
   const register = () => {
-    Axios.post('http://jabkhong-backend.vercel.app/api/register', {
+    Axios.post('https://jabkhong-backend.vercel.app/api/register', {
       name: nameReg, 
       id_card: idCard, 
       tel: tel}).then((response)=>{
