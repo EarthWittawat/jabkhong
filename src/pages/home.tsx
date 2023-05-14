@@ -15,6 +15,7 @@ export default function Home() {
       const data = await res.json();
       reportItems(data)
     }
+    fetchData();
   })
   return (
     <main>
