@@ -54,7 +54,7 @@ export default function ReportPage() {
       </div>
       <div className='flex flex-col items-center'>
         <div className="my-10 w-9/12 max-w-screen-xl animate-fade-up gap-5 px-5 xl:px-0">
-       < Reportlistcard name={'สมมติชื่อ ก'} bank={'000-111-9200'} detail={'โกงค่าเสื้อผ้า 3 ตัว ราคา 900 บาท'}/>
+       < Reportlistcard name={'สมมติชื่อ ก'} bank={'000-111-9200'} date={"22 เมษายน 2566"} detail={'โกงค่าเสื้อผ้า 3 ตัว ราคา 900 บาท'}/>
       </div>
       </div>
       </div>

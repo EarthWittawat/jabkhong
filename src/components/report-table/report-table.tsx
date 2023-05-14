@@ -1,16 +1,36 @@
-import React from "react";
+import React, { JSXElementConstructor, ReactElement, ReactFragment, ReactPortal, useEffect } from "react";
 import { Table, Input, Spacer,Tooltip, Dropdown } from "@nextui-org/react";
-import { IconButton } from "./IconButton";
-import { EyeIcon } from "./EyeIcon";
 import { useState } from "react";
 import Link from "next/link";
-import Box from '@mui/material/Box';
-import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
-
+import { useRouter } from "next/router";
 export default function ReportTable(this: any) {
+  const router = useRouter();
+  const [report, reportItems] = useState([]);
+  const [text, setText] = useState('');
+  const [suggestions, setSuggestions] = useState([]);
+  useEffect(() =>{
+    const fetchData = async () => {
+      const res = await fetch("https://jabkhong-backend.vercel.app/api/report");
+      const data = await res.json();
+      reportItems(data)
+    }
+    
+    fetchData();
+  }, []);
+  const onChangeHandler = (text: any) => {
+    let matches: React.SetStateAction<never[]> = []
+    if(text.length > 0){
+      matches = report.filter(rep => {
+        const regex = new RegExp(`${text}`, "gi");
+        return rep.name.match(regex);
+      })
+    }
+    console.log('matches',matches);
+    setSuggestions(matches);
+    setText(text)
+  }
   const [selected, setSelected] = React.useState('ชื่อบัญชี');
   const handleChange = (event: SelectChangeEvent) => {
     setSelected(event.target.value as string);
@@ -18,8 +38,11 @@ export default function ReportTable(this: any) {
     return (
       <>
       <div className="flex flex-col">
-      <div className="flex flex-row gap-8 justify-center ">
-      <Input placeholder="กรอกข้อมูล" />
+      <div className="flex flex-row gap-2 justify-center ">
+      <div className="md:w-48">
+      <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" onChange={e=> onChangeHandler(e.target.value)} placeholder="Username"></input>
+          </div>
+        <div className="md:w-8">
       <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
@@ -33,47 +56,14 @@ export default function ReportTable(this: any) {
           <MenuItem value={'Promptpay'}>Promptpay</MenuItem>
           <MenuItem value={'Truewallet'}>Truewallet</MenuItem>
         </Select>
+        </div>
     </div>
-    <div className="flex-1 justify-center ">
-        <Table
-          aria-label="Example static collection table"
-          css={{
-            height: "auto",
-            minWidth: "auto",
-            textAlign: "left",
-          }}
-          selectionMode="single"
-        >
-          <Table.Header>
-            <Table.Column>ชื่อ</Table.Column>
-            <Table.Column>ตรวจสอบข้อมูล</Table.Column>
-          </Table.Header>
-          <Table.Body>
-            <Table.Row key="1">
-              <Table.Cell>สมมติชื่อ ก</Table.Cell>
-              <Table.Cell>
-                <Tooltip content="Details">
-                <IconButton >
-                  <EyeIcon size={20} fill="#979797" height={undefined} width={undefined} />
-                  <Link href={'/reportcheck'}></Link>
-                </IconButton>
-              </Tooltip></Table.Cell>
-            </Table.Row>
-            <Table.Row key="2">
-              <Table.Cell>สมมติชื่อ ข</Table.Cell>
-              <Table.Cell>
-                <Tooltip content="Details">
-                <IconButton >
-                  <EyeIcon size={20} fill="#979797" height={undefined} width={undefined} />
-                  <Link href={'/reportcheck'}></Link>
-                </IconButton>
-              </Tooltip>
-              </Table.Cell>
-            </Table.Row>
-          </Table.Body>
-        </Table>
-        </div>
-        </div>
+    {suggestions && suggestions.map((suggestion, i )=>
+            <button key={i} className="suggestion col-md-12 justify-content-md-center"><Link href={{ pathname:'/reportsearch/', query : {reportName: suggestion.name}}}>{suggestion.name}</Link></button>
+    )}
+    </div>
+    
+   
         </>
     );
   }

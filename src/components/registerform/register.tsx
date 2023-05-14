@@ -2,14 +2,32 @@ import React from "react";
 import { Tooltip, Image,  Button, Input} from "@nextui-org/react";
 import { useState } from "react";
 import Link from "next/link";
+import Axios from 'axios'
 export default function RegisterForm(this: any) {
+  const [nameReg, setNameReg] = useState('')
+  const [idCard, setidCard] = useState('')
+  const [tel, setTel] = useState('')
+  const register = () => {
+    Axios.post('http://jabkhong-backend.vercel.app/api/register', {
+      name: nameReg, 
+      id_card: idCard, 
+      tel: tel}).then((response)=>{
+        console.log(response);
+      });
+  };
     return (
       <>
       <div className="flex flex-col items-center ">
       <div className="flex flex-col mb-2 justify-center items-center">
-      <Input label="ชื่อ-สกุล" />
-      <Input label="หมายเลขบัตรประชาชน" />
-      <Input label="หมายเลขโทรศัพท์" />
+      <Input onChange={(e)=> {
+        setNameReg(e.target.value)
+        }} label="ชื่อ-สกุล" />
+      <Input onChange={(e)=> {
+        setidCard(e.target.value)}} 
+        label="หมายเลขบัตรประชาชน" />
+      <Input onChange={(e)=> {
+        setTel(e.target.value)}} 
+        label="หมายเลขโทรศัพท์" />
    
         </div>
         <div className="my-4 flex flex-col justify-center">
@@ -20,11 +38,9 @@ export default function RegisterForm(this: any) {
         <Button flat> อัปโหลดบัตรประชาชน  </Button>
         </div>
         
-        <Link href={"/reportpage"}>
-        <Button shadow color="success" auto>
+        <Button onClick={register} shadow color="success" auto>
         ลงทะเบียน 
         </Button>
-        </Link>
         </div>
         </>
     );

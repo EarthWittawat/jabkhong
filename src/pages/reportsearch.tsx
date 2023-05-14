@@ -7,7 +7,47 @@ import ComponentGrid from '@/components/component-grid/component-grid'
 import ReportTable from '@/components/report-table/report-table'
 import Reportuser from '@/components/reportuser/reportuser'
 import Reportlistcard from '@/components/reportlist/list'
+import { ReactSearchAutocomplete } from 'react-search-autocomplete'
+import { JSXElementConstructor, ReactElement, ReactFragment, ReactPortal, useEffect, useState } from 'react';
+import { useParams } from 'next/navigation';
+import { useRouter } from 'next/router'
 export default function ReportSearch() {
+  const reportName = useRouter()
+  const [report, reportItems] = useState<any[]>([]);
+  useEffect(() =>{
+    const fetchData = async () => {
+    const res = await fetch(`https://jabkhong-backend.vercel.app/api/reportrequest?name=${reportName.query.reportName}`);
+    const data = await res.json();
+    reportItems(data)
+    // const dataArr = Object.values(data.name);
+  console.log(data)
+};
+  fetchData();
+  }, [reportName]);
+  const handleOnSearch = (string: any, results: any) => {
+    console.log(string, results)
+  }
+
+  const handleOnHover = (result: any) => {
+    console.log(result)
+  }
+
+  const handleOnSelect = (item: any) => {
+    console.log(item)
+  }
+
+  const handleOnFocus = () => {
+    console.log('Focused')
+  }
+
+  const formatResult = (item: { id: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | ReactFragment | ReactPortal | null | undefined; name: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | ReactFragment | ReactPortal | null | undefined }) => {
+    return (
+      <>
+        <span style={{ display: 'block', textAlign: 'left' }}>id: {item.id}</span>
+        <span style={{ display: 'block', textAlign: 'left' }}>name: {item.name}</span>
+      </>
+    )
+  }
   return (
     <main>
       <Navbar />
@@ -24,8 +64,10 @@ export default function ReportSearch() {
       </div>
       <div className='bg-white'>
       <div className="flex justify-center flex-col gap-8">
+   
       <div className='flex flex-col items-center'>
         <div className="my-10 w-9/12 max-w-screen-xl animate-fade-up gap-5 px-5 xl:px-0">
+
         {reportcheck.map(({ title, description, demo, large }) => (
           <Card
             key={title}
@@ -35,7 +77,7 @@ export default function ReportSearch() {
               // title === "Beautiful, reusable components" ? (
               //   <ComponentGrid />
               // ) : (
-                demo
+              demo
               // )
             }
             large={large}
@@ -43,10 +85,14 @@ export default function ReportSearch() {
         ))}
       </div>
       </div>
-      <span className='flex justify-center text-xl font-bold mt-4'>ตรวจพบการโกง 1 รายการ 😡</span>
+      <span className='flex justify-center text-xl font-bold mt-4'>ตรวจพบการโกง {report.length} รายการ 😡</span>
       <div className='flex flex-col items-center'>
         <div className="my-10 w-9/12 max-w-screen-xl animate-fade-up gap-5 px-5 xl:px-0">
-       < Reportlistcard name={'สมมติ ว่าโกง'} bank={'000-111-9200'} detail={'โกงค่าเสื้อผ้า 3 ตัว ราคา 900 บาท'}/>
+          { report.map((item, index) => (
+            <div key={index}>
+       < Reportlistcard name={item.name} bank={item.tel} date={item.date.toLocaleString("th-TH", { timeZone: "UTC" })} detail={item.detail}/>
+       </div>
+          ))}
       </div>
       </div>
       </div>
@@ -79,3 +125,4 @@ const letreport = [
     ),
   }
 ];
+
