@@ -4,6 +4,7 @@ import ReportTable from '@/components/report-table/report-table'
 import { Dropdown, Input, Button } from '@nextui-org/react'
 import React from 'react'
 import ReportForm from '@/components/reportform/form'
+import Card from '@/components/card/card'
 import Reportlistcard from '@/components/reportlist/list'
 export default function ReportPage() {
     const menuItems = [
@@ -37,24 +38,24 @@ export default function ReportPage() {
         </div>
       </div>
       <div className='bg-[#1E1E1E]'>
-      <div className="flex justify-center flex-col">
-      <div className='flex flex-col justify-center gap-4 items-center'>
-      < ReportForm/>
-      <div className='flex flex-row gap-4'>
-      <Button  color="success" auto>
-        อัปโหลดหลักฐานการโกง 
-        </Button>
-        <Button  color="success" auto>
-        อัปโหลดหลักฐานการสนทนา 
-        </Button>
-        <Button  color="success" auto>
-        วันที่ถูกฉ้อโกง 
-        </Button>
-      </div>
-      </div>
+      <div className="flex justify-center flex-col gap-8">
       <div className='flex flex-col items-center'>
-        <div className="my-10 w-9/12 max-w-screen-xl animate-fade-up gap-5 px-5 xl:px-0">
-       < Reportlistcard name={'สมมติชื่อ ก'} bank={'000-111-9200'} date={"22 เมษายน 2566"} detail={'โกงค่าเสื้อผ้า 3 ตัว ราคา 900 บาท'}/>
+        <div className="my-10 w-[65%] animate-fade-up gap-5 px-5 xl:px-0">
+        {reportcheck.map(({ title, description, demo, large }) => (
+          <Card
+            key={title}
+            title={title}
+            description={description}
+            demo={
+              // title === "Beautiful, reusable components" ? (
+              //   <ComponentGrid />
+              // ) : (
+                demo
+              // )
+            }
+            large={large}
+          />
+        ))}
       </div>
       </div>
       </div>
@@ -66,12 +67,12 @@ export default function ReportPage() {
 }
 const reportcheck = [
   {
-    title: "ตรวจสอบข้อมูลการฉ้อโกง 🔍",
+    title: "แจ้งโกง 🔍",
     description:
       "",
     large: true,
     demo: (
-      <ReportTable/>
+      <ReportForm/>
     ),
   }
 ];
