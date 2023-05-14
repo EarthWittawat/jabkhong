@@ -7,9 +7,9 @@ import Select, { SelectChangeEvent } from '@mui/material/Select';
 import { useRouter } from "next/router";
 export default function ReportTable(this: any) {
   const router = useRouter();
-  const [report, reportItems] = useState([]);
+  const [report, reportItems] =  useState([] as any);
   const [text, setText] = useState('');
-  const [suggestions, setSuggestions] = useState([]);
+  const [suggestions, setSuggestions] = useState([] as any);
   useEffect(() =>{
     const fetchData = async () => {
       const res = await fetch("https://jabkhong-backend.vercel.app/api/report");
@@ -22,7 +22,7 @@ export default function ReportTable(this: any) {
   const onChangeHandler = (text: any) => {
     let matches: React.SetStateAction<never[]> = []
     if(text.length > 0){
-      matches = report.filter(rep => {
+      matches = report.filter((rep: { name: string; }) => {
         const regex = new RegExp(`${text}`, "gi");
         return rep.name.match(regex);
       })
@@ -58,7 +58,7 @@ export default function ReportTable(this: any) {
         </Select>
         </div>
     </div>
-    {suggestions && suggestions.map((suggestion, i )=>
+    {suggestions && suggestions.map((suggestion : any, i : any)=>
             <button key={i} className="suggestion col-md-12 justify-content-md-center"><Link href={{ pathname:'/reportsearch/', query : {reportName: suggestion.name}}}>{suggestion.name}</Link></button>
     )}
     </div>
