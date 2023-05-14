@@ -6,7 +6,16 @@ import Card from '@/components/card/card'
 import ComponentGrid from '@/components/component-grid/component-grid'
 import ReportTable from '@/components/report-table/report-table'
 import Reportuser from '@/components/reportuser/reportuser'
+import { useEffect, useState } from 'react'
 export default function Home() {
+  const [report, reportItems] =  useState([] as any);
+  useEffect(() =>{
+    const fetchData = async () => {
+      const res = await fetch("https://jabkhong-backend.vercel.app/api/report");
+      const data = await res.json();
+      reportItems(data)
+    }
+  })
   return (
     <main>
       <Navbar />
@@ -26,7 +35,7 @@ export default function Home() {
       <div className='bg-white'>
       <div className="flex justify-center flex-col gap-8">
       
-      <span className='flex justify-center text-xl font-bold mt-8'>ตรวจพบการโกง 1023 ราย 😡</span>
+      <span className='flex justify-center text-xl font-bold mt-8'>ตรวจพบการโกง {report.length} ราย 😡</span>
       <div className='flex flex-col items-center'>
         <div className="my-10 w-8/12 max-w-screen-xl animate-fade-up gap-5 px-5 xl:px-0">
         {reportcheck.map(({ title, description, demo, large }) => (

@@ -8,8 +8,7 @@ interface Props {
 }
 
 export default function Reportlistcard(props: Props) {
-    
-  return (
+    return (
     <div className="w-full max-w-full flex justify-center shadow-md mb-10 border rounded-md bg-white">
       <div className="rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
         <div className="flex flex-row mt-4">
