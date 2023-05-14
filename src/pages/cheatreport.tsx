@@ -6,7 +6,7 @@ import Card from '@/components/card/card'
 import ComponentGrid from '@/components/component-grid/component-grid'
 import Data from '@/components/report-table/report-table'
 import Reportuser from '@/components/reportuser/reportuser'
-import DataTable from '@/components/report-table/data-table'
+import CheatTable from '@/components/report-table/cheat-table'
 export default function Home() {
   return (
     <main>
@@ -53,6 +53,6 @@ const letreport = [
     description:
       "",
     large: true,
-    demo: <DataTable/>
+    demo: <CheatTable/>
   }
 ];

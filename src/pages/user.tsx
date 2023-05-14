@@ -4,7 +4,7 @@ import Sidebar from '@/components/navbar/sidebar'
 import Footerpage from '@/components/footer/footerpage'
 import Card from '@/components/card/card'
 import ComponentGrid from '@/components/component-grid/component-grid'
-import DataTable from '@/components/report-table/data-table'
+import UserTable from '@/components/report-table/user-table'
 import Reportuser from '@/components/reportuser/reportuser'
 export default function Home() {
   return (
@@ -52,6 +52,6 @@ const letreport = [
     description:
       "",
     large: true,
-    demo: <DataTable/>
+    demo: <UserTable/>
   }
 ];

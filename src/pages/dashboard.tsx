@@ -7,7 +7,17 @@ import ComponentGrid from '@/components/component-grid/component-grid'
 import Graph from '@/components/graph/graph'
 import Reportuser from '@/components/reportuser/reportuser'
 import { Grab } from 'lucide-react'
+import { useEffect, useState } from 'react'
 export default function Dashboard() {
+  const [report, reportItems] = useState<any[]>([]);
+  useEffect(()=>{
+    const fetchData = async () => {
+      const res = await fetch(`https://jabkhong-backend.vercel.app/api/report`)
+      const data = await res.json();
+      reportItems(data)
+    }
+    fetchData();
+  })
   return (
     <main>
       <Sidebar />
@@ -26,7 +36,7 @@ export default function Dashboard() {
           <Card
             key={title}
             title={title}
-            description={description}
+            description={`${report.length} รายการ 😡`}
             demo={
               // title === "Beautiful, reusable components" ? (
               //   <ComponentGrid />
@@ -50,8 +60,7 @@ export default function Dashboard() {
 const graph = [
   {
     title: "พบการโกง",
-    description:
-      "1023 รายการ 😡",
+    description:'',
     large: true,
     demo: <Graph/>
   }

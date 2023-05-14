@@ -6,11 +6,13 @@ import { useState } from "react";
 import Link from "next/link";
 import { useDemoModal } from '@/components/component-grid/demo-modal'
 
-export default function ReportTable(this: any) {
+export default function CheatTable(this: any) {
   const [report, reportItems] = useState<any[]>([]);
+  const { DemoModal, setShowDemoModal } = useDemoModal();
+  const [loading, setLoading] = useState(false)
   useEffect(()=>{
     const fetchData = async () => {
-      const res = await fetch(`https://jabkhong-backend.vercel.app/api/reportwaitlist`)
+      const res = await fetch(`https://jabkhong-backend.vercel.app/api/report`)
       const data = await res.json();
       reportItems(data)
     }
@@ -38,22 +40,16 @@ export default function ReportTable(this: any) {
             <Table.Column>ธนาคาร</Table.Column>
             <Table.Column>PromptPay</Table.Column>
             <Table.Column>truewallet</Table.Column>
-            <Table.Column>image</Table.Column>
-            <Table.Column>สถานะ</Table.Column>
-            <Table.Column>ตรวจสอบ</Table.Column>
           </Table.Header>
           <Table.Body>
             {report.map(rep => (
             <Table.Row key={rep.id}>
               <Table.Cell>{rep.id}</Table.Cell>
               <Table.Cell>{rep.name}</Table.Cell>
-              <Table.Cell>{rep.details}</Table.Cell>
+              <Table.Cell>{rep.detail}</Table.Cell>
               <Table.Cell>{rep.bank}</Table.Cell>
               <Table.Cell>{rep.promptpay}</Table.Cell>
               <Table.Cell>{rep.truewallet}</Table.Cell>
-              <Table.Cell>{rep.image}</Table.Cell>
-              <Table.Cell>{rep.status}</Table.Cell>
-              <Table.Cell><Button size="sm" >ยืนยัน</Button></Table.Cell>
             </Table.Row>
 ))}
           </Table.Body>
