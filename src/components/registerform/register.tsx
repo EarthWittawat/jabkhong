@@ -42,6 +42,8 @@ export default function RegisterForm(this: any) {
         <Button onClick={register} shadow color="success" auto>
         ลงทะเบียน 
         </Button>
+
+        <button></button>
         </div>
         </>
     );
