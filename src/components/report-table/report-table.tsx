@@ -63,7 +63,7 @@ export default function ReportTable(this: any) {
     </Dropdown>
         </div>
     </div>
-    <div className="flex flex-row justify-center mt-4">
+    <div className="flex flex-col justify-center mt-4">
     {suggestions && suggestions.map((suggestion : any, i : any)=>
             <button key={i} className="suggestion w-full"><Link href={{ pathname:'/reportsearch/', query : {reportName: suggestion.name}}}>{suggestion.name}</Link></button>
     )}
