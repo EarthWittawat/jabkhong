@@ -7,7 +7,15 @@ import ComponentGrid from '@/components/component-grid/component-grid'
 import Data from '@/components/report-table/report-table'
 import Reportuser from '@/components/reportuser/reportuser'
 import CheatTable from '@/components/report-table/cheat-table'
+import { useEffect } from 'react'
 export default function Home() {
+  useEffect(()=>{
+    const token = localStorage.getItem('admin_login');
+  
+    if(!token){
+      window.location.href = "/admin_login";
+    }
+  },[])
   return (
     <main>
       <Sidebar />
