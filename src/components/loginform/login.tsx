@@ -16,6 +16,7 @@ export default function Loginform(this: any) {
   };
     return (
       <>
+       <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
       <div className="flex flex-col items-center ">
       <div className="flex flex-col mb-2">
       <Input onChange={(e)=> {
