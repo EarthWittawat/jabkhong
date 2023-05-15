@@ -11,7 +11,6 @@ export default function Loginform(this: any) {
       id_card: idCard, 
       tel: tel}).then((response)=>{
         console.log(response);
-        <Link href={"/reportpage"}></Link>
       });
   };
     return (
