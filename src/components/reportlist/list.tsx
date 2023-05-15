@@ -3,6 +3,8 @@ import React from "react";
 interface Props {
   name: string;
   bank: string;
+  promptpay: string;
+  truewallet: string;
   detail: string;
   date: string;
 }
@@ -19,6 +21,12 @@ export default function Reportlistcard(props: Props) {
         </div>
         <p className="text-gray-700 text-base">
           เลขบัญชี : {props.bank}
+        </p>
+        <p className="text-gray-700 text-base">
+          Promptpay : {props.promptpay}
+        </p>
+        <p className="text-gray-700 text-base">
+          Truewallet : {props.truewallet}
         </p>
         <p className="text-gray-700 text-base mt-4">
           วันที่ : {props.date}

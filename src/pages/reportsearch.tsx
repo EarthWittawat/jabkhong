@@ -90,7 +90,7 @@ export default function ReportSearch() {
         <div className="my-10 w-9/12 max-w-screen-xl animate-fade-up gap-5 px-5 xl:px-0">
           { report.map((item, index) => (
             <div key={index}>
-       < Reportlistcard name={item.name} bank={item.tel} date={item.date.toLocaleString("th-TH", { timeZone: "UTC" })} detail={item.detail}/>
+       < Reportlistcard name={item.name} bank={item.bank} promptpay={item.promptpay} truewallet={item.truewallet} date={item.date.toLocaleString("th-TH", { timeZone: "UTC" })} detail={item.detail}/>
        </div>
           ))}
       </div>
