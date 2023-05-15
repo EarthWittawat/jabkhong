@@ -21,8 +21,8 @@ export default function Home() {
     <main>
       <Navbar />
       <div className='bg-gradient-to-b from-[#FA9372] to-[#EF709B]'>
-      <div className="relative isolate px-6 pt-14 lg:px-8">
-        <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
+      <div className="relative isolate px-6 lg:px-8">
+        <div className="mx-auto max-w-2xl py-6 sm:py-12 lg:py-24">
           <div className="text-center">
             <h1 className="text-6xl text-white font-bold leading-relaxed drop-shadow-md">
             รู้ทันกลโกงมิจฉาชีพ<br />

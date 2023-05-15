@@ -6,7 +6,15 @@ import Card from '@/components/card/card'
 import ComponentGrid from '@/components/component-grid/component-grid'
 import DataTable from '@/components/report-table/data-table'
 import Reportuser from '@/components/reportuser/reportuser'
+import React, { useEffect } from "react";
 export default function Home() {
+  useEffect(()=>{
+  const token = localStorage.getItem('admin_login');
+
+  if(!token){
+    window.location.href = "/admin_login";
+  }
+},[])
   return (
     <main>
       <Sidebar />

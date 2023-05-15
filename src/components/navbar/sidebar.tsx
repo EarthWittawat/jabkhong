@@ -2,7 +2,12 @@ import React, { useEffect, useState } from "react";
 import { Disclosure } from "@headlessui/react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import Link from "next/link";
+import { Button } from "@nextui-org/react";
 function SideNavbar() {
+  const handleLogout = () => {
+    localStorage.removeItem("admin_login");
+    window.location.href = "/admin_login";
+  };
   const [report, reportItems] = useState<any[]>([]);
   useEffect(()=>{
     const fetchData = async () => {
@@ -28,11 +33,6 @@ function SideNavbar() {
               จับโกง ! 🔍
             </h1>
             <div className=" my-4 border-b border-gray-100 pb-4">
-              <div className="flex mb-2 justify-start items-start gap-4 pl-3 hover:bg-gray-900 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
-                <Link className="text-base text-gray-800 group-hover:text-white font-semibold " href="/dashboard">
-                  Dashboard
-                </Link>
-              </div>
               <div className="flex  mb-2 justify-start items-center gap-4 pl-3 hover:bg-gray-900 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
               <Link className="text-base text-gray-800 group-hover:text-white font-semibold " href="/accept">
                   อนุมัติการแจ้งโกง ({report.length}) 🔔
@@ -43,13 +43,20 @@ function SideNavbar() {
                   การโกง
                 </Link>
               </div>
-              <div className="flex  mb-2 justify-start items-center gap-4 pl-3 hover:bg-gray-900 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
+              <div className="flex  mb-2 justify-start items-center gap-4 pl- hover:bg-gray-900 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
               <Link className="text-base text-gray-800 group-hover:text-white font-semibold " href="/user">
                   รายชื่อผู้ใช้
                 </Link>
               </div>
             </div>
             {/* logout */}
+            <div className=" my-4">
+              <div className="flex mb-2 justify-start items-center gap-4 pl-3 border border-gray-200  hover:bg-gray-900 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
+              <button onClick={handleLogout} className="text-base text-gray-800 group-hover:text-white font-semibold ">
+                  Logout
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </Disclosure>
